@@ -11,6 +11,7 @@ import Update from './page/prodact/Update';
 import Form from './page/prodact/Form';
 import RefView from './page/refiral/RefView';
 import Viewnotification from './page/notification/Viewnotification';
+import Login from './page/Auth/Login';
 function App() {
  
   return (
@@ -34,6 +35,7 @@ function App() {
    <Route path="/form" element={<Form/>}/>
    <Route path="/ref" element={<RefView/>}/>
    <Route path="/com" element={<Viewnotification/>}/>
+   <Route path="/signin" element={<Login/>}/>
     </Routes>
     </div>
     </div>

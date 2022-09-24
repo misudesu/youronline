@@ -35,7 +35,7 @@ export default function Dashibord() {
   <h5 className="text-sm font-bold">Hi Welcome Back!</h5>
   <p className="text-sm">JustDo Dashboard,</p>
 </div>
-       <div className='row container align-items-center'>
+       <div className='row container align-items-center g-4'>
         <div className='col-6 col-lg-3 col-md-3  '>
 <div className='bg-indigo-100 hover:bg-blue-100 card container'>
 <p className="mb-0">Number of prodact</p>
@@ -55,7 +55,7 @@ export default function Dashibord() {
 </div>
         </div>
         
-        <div className='col-6 mt-4 col-lg-3 col-md-3'>
+        <div className='col-6  col-lg-3 col-md-3'>
         <div className='bg-indigo-100 hover:bg-blue-100 card container'>
 <p className="mb-0 text-sm lg-text-">Number of other</p>
 <p className=' text-xl font-bold'>34040</p>
@@ -121,8 +121,8 @@ export default function Dashibord() {
 </div>
 {/*  */}
         </div>
-        <div className="row mt-4 container">
-         <div className="lg:pr-4 col-12 col-lg-6 col-md-6 card">
+        <div className="row mt-4 justify-center container">
+         <div className="mb-4 mr-4 lg:pr-4 col-12 col-lg-6 col-md-6 card">
 <p>Order and Downloads</p>
 <p className='text-sm '>The total number of sessions with in data range. 
   it is the period time a user is actively engaged with your app.</p>
@@ -145,7 +145,7 @@ export default function Dashibord() {
       options={options}
     />
          </div>
- <div className=" col-12 col-lg-6 col-md-6 lg:pl-2 card">
+ <div className=" mb-4 mr-4 lg:pr-4 col-12 col-lg-5 col-md-6 card">
  <p>Seles Report</p>  
  <p className='text-sm '>The total number of sessions with in data range. 
   it is the period time a user is actively engaged with your app.</p>
