@@ -1,92 +1,87 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Carousel from 'react-bootstrap/Carousel';
-export default function Update() {
+import {BrowserRouter as Router,Route,Routes,Link,useLocation,Nav} from 'react-router-dom'
+
+export default function Update(props) {
+  const {username}=useLocation().state;
+  const { type}=useLocation().state;
+  const {  status}=useLocation().state;
+  const {   phone}=useLocation().state;
+  const {   name}=useLocation().state;
+  const { gps}=useLocation().state;
+  const {   kebele}=useLocation().state;
+  const {   city}=useLocation().state;
+  const {  title}=useLocation().state;
+  const {   address}=useLocation().state;
+  const {    country}=useLocation().state;
+  const {    price}=useLocation().state;
+  const {  discription}=useLocation().state;
+  const {   imgs}=useLocation().state;
+  
+  
+  
+  const prodact={
+    prodacts:[
+      {
+        name:name,title:title,status:status,gps:gps,address:address,kebele:kebele,city:city,phone:phone,country:country,price:price,username:username,type:type,discription:discription,
+        imgss:[
+  imgs[0],  
+    ]
+  }
+    ]
+  }
   return (
-    <main className=''>
-      <div class="bg-white">
-    <div class="pt-6">
-    
-      {/* <!-- Image gallery --> */}
-      <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
-    
-       
-        <div class="aspect-w-1 aspect-h-1 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:h-80">
-        <Carousel variant="dark">
-      <Carousel.Item>
+   <div>
+    <div className='row px-2'>
+      {prodact.prodacts.map((data,index)=>(
+
+     <>
+      <div key={index} className='col-12 col-lg-6 col-md-6'>
+     
+
+      <Carousel variant="dark" >
+      {data.imgss[0].map((imgs,index)=>(
+      <Carousel.Item key={index}>
         <img
-        class="h-full w-full object-cover object-center"
-          src="https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg"
+          className="d-block w-100"
+          src={imgs.img}
           alt="First slide"
         />
-        
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-       class="h-full w-full object-cover object-center"
-          src="https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg"
-          alt="Second slide"
-        />
        
       </Carousel.Item>
-      <Carousel.Item>
-        <img
-       class="h-full w-full object-cover object-center"
-          src="https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg"
-          alt="Third slide"
-        />
-      
-      </Carousel.Item>
-    </Carousel>
+       ))}
     
-        </div>
-         
+    </Carousel>
+  
+    <div className='col-12 col-lg-12  col-md-12'>
+      <iframe className='w-96 h-96' src={data.gps}  allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+   
       </div>
-  
-     {/* <!-- Product info --> */}
-     <div class="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24">
-        <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-          <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Basic Tee 6-Pack</h1>
-        </div>
-  
-        {/* <!-- Options --> */}
-        <div class="mt-4 lg:row-span-3 lg:mt-0">
-        
-          <p class="text-3xl tracking-tight text-gray-900">$192</p>
-  
-          {/* <!-- Reviews --> */}
- 
-            <button type="submit" class="mt-2 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Apperuved</button>
-            <button type="submit" class="mt-2 flex w-full items-center justify-center rounded-md border border-transparent bg-red-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Reject</button>
-          
-        </div>
-  
-        <div class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pb-16 lg:pr-8">
-          {/* <!-- Description and details --> */}
-         
-  
-          <div class="">
-            <h3 class="text-sm font-medium text-gray-900">Quick Facts</h3>
-  
-            <div class="mt-4">
-              <ul role="list" class="list-disc space-y-2 pl-4 text-sm">
-                <li class="text-gray-400"><span class="text-gray-600">Hand cut and sewn locally</span></li>
-  
-       </ul>
-            </div>
-          </div>
-  
-          <div class="mt-10">
-            <h2 class="text-sm font-medium text-gray-900">Details</h2>
-  
-            <div class="mt-4 space-y-6">
-              <p class="text-sm text-gray-600">The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming &quot;Charcoal Gray&quot; limited release.</p>
-            </div>
-          </div>
-        </div>
       </div>
-      {/*  */}
-    </div>
+      <div className='col-12 col-lg-6 col-md-6'>
+    <h2 className='h2'>{data.name}</h2>   
+    <p>{data.price}</p> 
+    <p>{data.discription}</p>
+     <h4>Type</h4>
+<p><li>{data.type}</li></p>
+<p className='h4'>Quike information</p>
+< >
+<li>Full name: <span>{data.username}</span></li>
+<li>Phone Number: <span>{data.phone}</span></li>
+<li>Country: <span>{data.country}</span></li>
+<li>City: <span>{data.city}</span></li>
+<li>Kebele: <span>{data.kebele}</span></li>
+<li>Address: <span>{data.address}</span></li>
+
+</>
+  <div className='flex gap-x-4 m-3'>
+    <button className='bg-blue-500 text-indigo-100 hover:bg-green-600 rounded-md py-1 px-8'>Appruve</button>
+    <button className='bg-gray-600 text-indigo-100 hover:bg-red-600 rounded-md py-1 px-8'>Reject</button>
   </div>
-</main>
+      </div>
+      </>
+  ))}
+    </div>
+   </div>
   )
 }

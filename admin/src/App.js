@@ -8,6 +8,9 @@ import Comment from './page/Comment';
 import Dashibord from './page/Dashibord';
 import NavBar from './page/NavBar';
 import Update from './page/prodact/Update';
+import Form from './page/prodact/Form';
+import RefView from './page/refiral/RefView';
+import Viewnotification from './page/notification/Viewnotification';
 function App() {
  
   return (
@@ -28,6 +31,9 @@ function App() {
    <Route  path="/refferial" element={<Reffiral/>}/>
    <Route path="/notification" element={<Notification/>}/>
    <Route path="/key" element={<Update/>}/>
+   <Route path="/form" element={<Form/>}/>
+   <Route path="/ref" element={<RefView/>}/>
+   <Route path="/com" element={<Viewnotification/>}/>
     </Routes>
     </div>
     </div>

@@ -4,9 +4,16 @@ import Tabs from 'react-bootstrap/Tabs';
 import Allprodact from './prodact/Allprodact';
 import Approve from './prodact/Approve';
 import Reject from './prodact/Reject';
+import {BrowserRouter as Router,Route,Routes,Link} from 'react-router-dom'
+
 export default function Prodact() {
   return (
     <div className='w-full'>Prodact
+    <div clasName="row">
+      <div className='col-12 col-lg-12 col-md-12 '>
+       <Link to="/form" ><button className='btn btn-primary items-right m-3'>Add prodact</button></Link>
+      </div>
+    </div>
         <Tabs
       defaultActiveKey="home"
       id="uncontrolled-tab-example"
