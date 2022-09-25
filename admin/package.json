@@ -1,6 +1,6 @@
 {
-  "homepage": "https://misudesu.github.io/rental-web",
-  "name": "rental-web",
+  "homepage": "https://misudesu.github.io/rentalweb/",
+  "name": "rentalweb",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
