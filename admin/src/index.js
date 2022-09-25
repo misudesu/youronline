@@ -7,7 +7,7 @@ import Nav from 'react-bootstrap/Nav'
 import { createRoot } from "react-dom/client";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-
+import 'react-toastify/dist/ReactToastify.css';
 import {
   createBrowserRouter,
   RouterProvider,

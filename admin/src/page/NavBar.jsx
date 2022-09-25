@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { storage, db, auth } from "./Configer";
 import {
   createBrowserRouter,
   RouterProvider,
   Route,
   Link,
 } from "react-router-dom";
+import { signOut } from "firebase/auth";
 export default function NavBar() {
     const [show, toggleShow] =useState(true);
  const nav={
@@ -21,7 +23,7 @@ export default function NavBar() {
     return (
     <div
     id="view"
-    className="h-screen  flex "
+    className="h-screen  flex leftside-menu"
 
   >
     <button
@@ -43,15 +45,15 @@ export default function NavBar() {
     </button>
     {show &&
     <div
-      id="sidebar"
-      className="  h-full md:block shadow-xl px-3 w-48 md:w-60 lg:w-60 overflow-x-hidden transition-transform duration-300 ease-in-out"
+      id="leftside-menu-container"
+      className="leftside-menu-container  h-100 md:block shadow-xl px-3 w-48 md:w-60 lg:w-60 overflow-x-hidden transition-transform duration-300 ease-in-out"
      
     >
-        <div class="flex flex-col space-y-2 mt-14">
+        <div class="flex flex-col space-y-2 mt-14 side-nav">
       
         {nav.side.map((data,index)=>( 
  <Link
- 
+ onClick={()=>{signOut(auth)}}
  to={data.path}
  className="space-x-4 text-sm font-medium text-gray-700 py-2 px-2 hover:bg-teal-500 hover:text-white hover:scale-105 rounded-md transition duration-150 ease-in-out"
  

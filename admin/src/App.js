@@ -12,14 +12,16 @@ import Form from './page/prodact/Form';
 import RefView from './page/refiral/RefView';
 import Viewnotification from './page/notification/Viewnotification';
 import Login from './page/Auth/Login';
+import { useAuthState } from "react-firebase-hooks/auth";
+import { storage, db, auth } from "./page/Configer";
 function App() {
- 
-  return (
-    
-   
-
- 
+  const [user] = useAuthState(auth);
+  return ( 
+    <> 
   <Router>
+    {!user? (
+    <> <Login/> </>
+    ):(
   <div className='flex   '>
   <NavBar/>
   <div className='mt-14 lg:pl-8   w-full'>
@@ -39,8 +41,9 @@ function App() {
     </Routes>
     </div>
     </div>
+    )}
   </Router> 
-
+  </>
 
   );
 }
