@@ -26,7 +26,7 @@ export default function NavBar() {
   >
     <button
       onClick={() => toggleShow(!show)}
-      className="p-2 border-2 bg-white rounded-md border-gray-200 shadow-lg text-gray-500 focus:bg-teal-500 focus:outline-none focus:text-white absolute top-0 left-0 sm:hidden"
+      className="p-2 border-2 bg-white rounded-md border-gray-200 shadow-sm text-gray-500 focus:bg-teal-500 focus:outline-none focus:text-white absolute top-0 left-0 sm:hidden"
     >
       <svg
         className="w-5 h-5 fill-current"
@@ -44,16 +44,18 @@ export default function NavBar() {
     {show &&
     <div
       id="sidebar"
-      className=" bg-white h-screen md:block shadow-xl px-3 w-48 md:w-60 lg:w-60 overflow-x-hidden transition-transform duration-300 ease-in-out"
+      className="  h-full md:block shadow-xl px-3 w-48 md:w-60 lg:w-60 overflow-x-hidden transition-transform duration-300 ease-in-out"
      
     >
         <div class="flex flex-col space-y-2 mt-14">
       
         {nav.side.map((data,index)=>( 
  <Link
+ 
  to={data.path}
  className="space-x-4 text-sm font-medium text-gray-700 py-2 px-2 hover:bg-teal-500 hover:text-white hover:scale-105 rounded-md transition duration-150 ease-in-out"
->
+ onClick={() => toggleShow(!show)}
+ >
  <svg
    className="w-6  h-6 fill-current inline-block"
    fill="currentColor"
