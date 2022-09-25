@@ -21,7 +21,7 @@ export default function NavBar() {
     return (
     <div
     id="view"
-    className="h-full  flex "
+    className="h-screen  flex "
 
   >
     <button
@@ -54,7 +54,7 @@ export default function NavBar() {
  
  to={data.path}
  className="space-x-4 text-sm font-medium text-gray-700 py-2 px-2 hover:bg-teal-500 hover:text-white hover:scale-105 rounded-md transition duration-150 ease-in-out"
- onClick={() => toggleShow(!show)}
+ 
  >
  <svg
    className="w-6  h-6 fill-current inline-block"
