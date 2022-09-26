@@ -1,8 +1,10 @@
 import React from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth';
 import {BrowserRouter as Router,Route,Routes,Link,useLocation,Nav} from 'react-router-dom'
 
-
+import { storage, db, auth } from "./Configer";
 export default function Reffiral() {
+  const [user]=useAuthState(auth);
   const onlineWork={
     rf:[
       {Name:"misael dessalegn",type:"Car",states:"Panding",img:"https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/homepage/families-gallery/2022/04_12/family_chooser_tecnica_m.png"}

@@ -5,8 +5,12 @@ import Allprodact from './prodact/Allprodact';
 import Approve from './prodact/Approve';
 import Reject from './prodact/Reject';
 import {BrowserRouter as Router,Route,Routes,Link} from 'react-router-dom'
-
+import { storage, db, auth } from "./Configer";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { getAuth } from 'firebase/auth';
 export default function Prodact() {
+  const auth = getAuth();
+  const [user]=useAuthState(auth);
   return (
     <div className='w-full'>Prodact
     <div clasName="row">

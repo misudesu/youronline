@@ -8,8 +8,6 @@ import {
 } from "firebase/auth";
 import { storage, db, auth } from "../Configer";
 import { ToastContainer, toast } from 'react-toastify';
-
-
 import {
   Timestamp,
   collection,
@@ -67,16 +65,29 @@ export default function () {
 
 // 
 const handleLogin = async () => {
-          
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-    
-    Navigate("/");
+  const auth = getAuth();
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      // ...
+      alert("you are login");
+    Navigate("/"); 
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });     
+  // try {
+  //   await signInWithEmailAndPassword(auth, email, password);
+  //   const user = userCredential.user;
+   
+  // } catch (error) {
+  //   // setMessage(error.code, { type: "error" });
+  //  // toast(error.code, { type: "error" });
+  //   alert(error.code, { type: "error" })
   
-  } catch (error) {
-    // setMessage(error.code, { type: "error" });
-  
-  }
+  // }
 };
 const ResetPassword=async()=>{
   await sendPasswordResetEmail(auth, email)
@@ -110,13 +121,14 @@ phoneNumber:formData.phoneNumber,
 createdAt: Timestamp.now().toDate(),
   })
     .then(() => {
-      toast("Article added successfully", { type: "success" });
-
+     // toast("Article added successfully", { type: "success" });
+alert("Article added successfully", { type: "success" });
       setProgress(0);
    
     })
     .catch((err) => {
-      toast("Error adding article", { type: "error" });
+      //toast("Error adding article", { type: "error" });
+      alert("Error adding article", { type: "error" })
     });
   }catch (error) {
     toast(error.code, { type: "error" });

@@ -1,7 +1,10 @@
 import React from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth';
 import {BrowserRouter as Router,Route,Routes,Link,useLocation,Nav} from 'react-router-dom'
-
+import { storage, db, auth } from "./Configer";
 export default function Notification() {
+  const [user] = useAuthState(auth);
+
   const onlineWork={
     rf:[
       {Name:"Muse",states:"sent",catagory:"Notification",type:"Admin",title:"Update Application",notif:"this a link to update new vertion application"}
