@@ -1,3 +1,14 @@
+import { Navigate, useNavigate } from "react-router-dom";
+import { storage, db, auth } from "../../Server";
+import { useAuthState } from "react-firebase-hooks/auth";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link,
+  useLocation,
+  Nav,
+} from "react-router-dom";
 import React, { useState } from "react";
 import {
   signInWithEmailAndPassword,
@@ -5,24 +16,9 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   updateProfile,
+  onAuthStateChanged,
 } from "firebase/auth";
-import { storage, db, auth } from "../Configer";
-import { ToastContainer, toast } from 'react-toastify';
-import {
-  Timestamp,
-  collection,
-  onSnapshot,
-  orderBy,
-  query,
-  addDoc,
-  doc,
-  updateDoc,
-  where,
-  deleteDoc,
-} from "firebase/firestore";
-import { Navigate } from "react-router-dom";
-
-export default function () {
+export default function Login() {
   const [formData, setformData] = useState({
     id: "",
     userName: "Muse Alemu",
@@ -33,46 +29,37 @@ export default function () {
     States: "Active",
     phoneNumber: "0916554522",
     progress: 0,
-    createdAt: Timestamp.now().toDate(),
+    createdAt: "",
   });
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleChange = (e) => {
     setformData({ ...formData, [e.target.name]: e.target.value });
   };
-// 
-const handleLogin = async () => {    
-  // try {
-  //   await signInWithEmailAndPassword(auth, email, password);
-  Navigate("/"); 
-  // } catch (error) {
-  //   // setMessage(error.code, { type: "error" });
-  //  // toast(error.code, { type: "error" });
-  //   alert(error.code, { type: "error" })
+  let navigate = useNavigate();
   
-  // }
-};
-const ResetPassword=async()=>{
-  await sendPasswordResetEmail(auth, email)
-.then(() => {
-  // Password reset email sent!
-  // ..
-  alert("Password reset email sent!");
-})
-.catch((error) => {
-  const errorCode = error.code;
-  const errorMessage = error.message;
-  // ..
-  alert(errorMessage)
-});
-}
-  //
-
-  // 
-
-  return (
-    <div>
-      <div className="flex flex-cols-2  justify-center mt-20 items-center mx-auto ">
+  const handleLogin = () => {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+      const  user = userCredential.user;
+        {
+          onAuthStateChanged(auth, (user) => {
+            if (user) {
+              navigate("/");
+            } else {
+            }
+          });
+        }
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+  };
+return(
+  <>
+   <div className="flex flex-cols-2  justify-center mt-20 items-center mx-auto ">
         <div className="bg-indigo-700 rounded-3xl hidden lg:block text-light mx-8 p-4 ">
           <p className="font-bold text-sm mt-14">BETOCH</p>
           <p className="text-lg mt-14 font-bold text-light">
@@ -98,7 +85,7 @@ const ResetPassword=async()=>{
             <div className="p-1 w-3  h-1 bg-gray-500 rounded-md"></div>
           </div>
         </div>
-        {/*  */}
+      
         <div className="w-96 p-4  lg:block p-0">
           <p className="mb-0 font-bold">Login</p>
           <p>Search your wish with us!</p>
@@ -125,13 +112,17 @@ const ResetPassword=async()=>{
             className="rounded-2xl px-5 bg-gray-200 p-1 w-full"
             placeholder="*******"
           />
-          <p className="mb-0 align-right " >Forget Password?</p>
+          <p className="mb-0 align-right " >
+            Forget Password?
+          </p>
           <div className="bg-indigo-600  px-5  text-light text-center  rounded-l-md rounded-r-md">
-            <button className="font-bold p-1" onClick={handleLogin}>Login</button>
+            <button className="font-bold p-1" onClick={handleLogin}>
+              Login
+            </button>
           </div>
           <span className="text-gray-400 mt-5">2022 GC BETOCH </span>
         </div>
       </div>
-    </div>       
-  );
+  </>
+)
 }

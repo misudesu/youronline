@@ -1,17 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import ReactDOM from 'react-dom';
 import App from './App';
-
+import './index.css'
 import 'react-toastify/dist/ReactToastify.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
- ReactDOM.render(
+ReactDOM.render(
   <React.StrictMode>
-  <App/>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
+
 
 

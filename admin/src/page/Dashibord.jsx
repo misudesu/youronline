@@ -1,6 +1,9 @@
 import React from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth';
 import  Chart  from "react-google-charts"
+import { auth } from './Configer';
 export default function Dashibord() {
+  const [user]=useAuthState(auth);
    const datas = [
     ["Year", "Sales", "Expenses"],
     ["2004", 1000, 400],

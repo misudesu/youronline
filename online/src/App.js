@@ -13,20 +13,27 @@ import RefView from './page/refiral/RefView';
 import Viewnotification from './page/notification/Viewnotification';
 import Login from './page/Auth/Login';
 import { useAuthState } from "react-firebase-hooks/auth";
-import { storage, db, auth } from "./page/Configer";
+import { storage, db, auth } from "./Server";
 import { useState } from 'react';
-import { getAuth } from 'firebase/auth';
+import { getAuth,onAuthStateChanged } from 'firebase/auth';
 import Signup from './page/Auth/Signup';
 function App() {
   const auth = getAuth();
+
+    
+
   const [showNav, setShowNav] = useState(true);
   const [user] = useAuthState(auth);
+  console.log(auth.currentUser?.email)
   return ( 
     <> 
+   
   <Router>
-    {!user ? 
+  {user ?(
+
+    
       <> 
-      {   showNav &&
+  
     <div className='flex   '>
     <NavBar/>
     <div className='mt-14 lg:pl-8   w-full'>
@@ -45,13 +52,15 @@ function App() {
       </Routes>
       </div>
       </div>
-      }
+     
       </>
-    :
-    <Signup/> 
- 
+  )
+      :
+      ( <Login/> )
+   
     }
   </Router> 
+   
   </>
 
   );

@@ -7,7 +7,7 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { storage, db, auth } from "../Configer";
+import { storage, db, auth } from "../../Server";
 import { ToastContainer, toast } from 'react-toastify';
 import {
   Timestamp,
@@ -24,7 +24,7 @@ import {
 import { Navigate, useNavigate } from "react-router-dom";
 
 export default function Signup() {
-  let navigate = useNavigate();
+ // let navigate = useNavigate();
   const [formData, setformData] = useState({
     id: "",
     userName: "Muse Alemu",
@@ -46,7 +46,7 @@ export default function Signup() {
 const handleLogin = async () => {    
   try {
     await signInWithEmailAndPassword(auth, email, password);
-  navigate("/"); 
+ // navigate("/"); 
   }catch (error) {
     // setMessage(error.code, { type: "error" });
    // toast(error.code, { type: "error" });

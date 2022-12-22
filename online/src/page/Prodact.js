@@ -5,7 +5,7 @@ import Allprodact from './prodact/Allprodact';
 import Approve from './prodact/Approve';
 import Reject from './prodact/Reject';
 import {BrowserRouter as Router,Route,Routes,Link} from 'react-router-dom'
-import { storage, db, auth } from "./Configer";
+import { storage, db, auth } from "../Server";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getAuth } from 'firebase/auth';
 export default function Prodact() {
